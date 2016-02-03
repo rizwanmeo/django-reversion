@@ -5,6 +5,7 @@ from django_nav import nav_groups
 from better_admin.admin import BetterAppAdmin, BetterModelAdmin
 
 from reversion.models import Revision, Version
+from reversion.filters import RevisionFilterSet
 
 urlpatterns = patterns(
     '',
@@ -18,6 +19,7 @@ class RevisionModelAdmin(BetterModelAdmin):
     update_template = 'reversion/revision_update.html'
     popup_template = 'reversion/revision_popup.html'
     detail_template = 'reversion/revision_detail.html'
+    filter_set = RevisionFilterSet
 
     def get_request_queryset(self, request):
         qs = super(RevisionModelAdmin,
